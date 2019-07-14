@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>vue_brower</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- <app></app> -->
+      <!-- <week-picker v-model="week"></week-picker> -->
+    </div>
+    <script src="dist/vue.js"></script>
+    <script src="dist/main.js"></script>
+    <script>
+      function trace(obj, msg){
+        console.log(msg);
+        console.log(obj);
+      }
+      new Vue({
+        el: '#app',
+        components: {
+          WeekPicker
+        },
+        data: {
+          msg: "hello",
+          week: {}
+        },
+        methods: {
+          getLocalWeek() {
+            var now = Date.now();
+          },
+          setCurrentDate() {
+            var cr_year = new Date().getFullYear();
+            var start = new Date(cr_year, 0, 1, 1, 0);
+            // trace(start.getMonth(), "start date: ");
+            var crr_week = (start - Date.now())/(7*86400);
+
+          }
+        },
+        mounted() {
+          this.setCurrentDate();
+        },
+
+      })
+    </script>
+  </body>
+
+</html>
