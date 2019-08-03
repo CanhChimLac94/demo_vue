@@ -9,23 +9,36 @@
   <body>
     <div id="app">
       <!-- <app></app> -->
-      <!-- <week-picker v-model="week"></week-picker> -->
+      <week-picker v-model="week">
+        <template>
+          <h2>Tran Van Dung</h2>
+        </template>
+      </week-picker>
+      <modal :title="mdl_title" id="my_mdl">
+        <template slot="conten" >
+          <div class="conten-body">
+            <h1>Tran van Dung</h1>
+          </div>
+        </template>
+      </modal>
     </div>
     <script src="dist/vue.js"></script>
     <script src="dist/main.js"></script>
     <script>
-      function trace(obj, msg){
+      function trace(obj, msg) {
         console.log(msg);
         console.log(obj);
       }
+      Vue.component('modal', modal);
       new Vue({
         el: '#app',
         components: {
-          WeekPicker
+          WeekPicker,
         },
         data: {
           msg: "hello",
-          week: {}
+          week: {},
+          mdl_title: "Hello Modal"
         },
         methods: {
           getLocalWeek() {
@@ -35,7 +48,7 @@
             var cr_year = new Date().getFullYear();
             var start = new Date(cr_year, 0, 1, 1, 0);
             // trace(start.getMonth(), "start date: ");
-            var crr_week = (start - Date.now())/(7*86400);
+            var crr_week = (start - Date.now()) / (7 * 86400);
 
           }
         },

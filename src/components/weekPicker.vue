@@ -5,6 +5,7 @@
       <span>{{ value }}</span>
     </p>
   </div>
+  
 </template>
 
 <script>
