@@ -14,13 +14,14 @@
           <h2>Tran Van Dung</h2>
         </template>
       </week-picker>
-      <modal :title="mdl_title" id="my_mdl">
+      <modal :title="mdl_title" id="my_mdl" :show-default.sync="is_show_mdl" ref="modal">
         <template slot="conten" >
           <div class="conten-body">
             <h1>Tran van Dung</h1>
           </div>
         </template>
       </modal>
+      <button class="btn btn-default" @click="open_modal">Open modal</button>
     </div>
     <script src="dist/vue.js"></script>
     <script src="dist/main.js"></script>
@@ -38,7 +39,8 @@
         data: {
           msg: "hello",
           week: {},
-          mdl_title: "Hello Modal"
+          mdl_title: "Hello Modal",
+          is_show_mdl: false
         },
         methods: {
           getLocalWeek() {
@@ -50,6 +52,11 @@
             // trace(start.getMonth(), "start date: ");
             var crr_week = (start - Date.now()) / (7 * 86400);
 
+          },
+          open_modal: function(){
+            // this.is_show_mdl = true;
+            // trace(this.is_show_mdl, "is_show_mdl: ");
+            this.$refs.modal.open();
           }
         },
         mounted() {
